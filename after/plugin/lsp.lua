@@ -1,5 +1,5 @@
 local lsp = require("lsp-zero")
-
+local lsp_config = require("lspconfig")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -36,8 +36,7 @@ lsp.set_preferences({
         info = 'I'
     }
 })
-
-lsp.on_attach(function(client, bufnr)
+local onAttach = function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -50,10 +49,26 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+end
 
+lsp.on_attach(onAttach)
+lsp_config["dartls"].setup({
+
+on_attach = onAttach,
+settings = {
+    dart = {
+        analysisExcludedFolder = {
+            vim.fn.expand("$Home/AppData/Local/Pub/Cache"),
+            vim.fn.expand("$Home/.pub-cache"),
+            vim.fn.expand("C:/dev/tooling/flutter"),
+        }
+    }
+
+}
+
+})
 lsp.setup()
-
+require("fidget").setup({})
 vim.diagnostic.config({
     virtual_text = true
 })
