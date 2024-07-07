@@ -4,7 +4,7 @@ return{
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason.nvim' },           -- Optional:
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
@@ -28,6 +28,8 @@ return{
             lsp.ensure_installed({
                 'tsserver',
                 'rust_analyzer',
+                'lua_ls',
+                'htmx-lsp',
             })
 
             -- Fix Undefined global 'vim'
