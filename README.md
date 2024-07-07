@@ -1,7 +1,7 @@
 # My custom neovim config.
 
 ## Included plugins
-- packer for package management
+- lazy for package management
 - dartls for dart language server support
 - lsp zero for misc lsp support
 - treesitter for syntax highlights
