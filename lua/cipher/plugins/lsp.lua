@@ -122,6 +122,8 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -130,12 +132,17 @@ return {
                 ['<S-Tab>'] = nil,
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
-            }, {
-                { name = 'buffer' },
-            })
+                    -- Copilot Source
+                    { name = "copilot",  group_index = 1, max_item_count = 1 },
+                    -- Other Sources
+                    { name = 'nvim_lsp', group_index = 2 },
+                    { name = 'luasnip',  group_index = 2 }, -- For luasnip users.
+                },
+                {
+                    { name = 'buffer', group_index = 3 },
+                })
         })
+
 
         vim.diagnostic.config({
             -- update_in_insert = true,
