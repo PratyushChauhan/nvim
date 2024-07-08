@@ -31,7 +31,6 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-                    print(server_name)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }

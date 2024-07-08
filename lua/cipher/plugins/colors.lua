@@ -28,7 +28,6 @@ return {
         config = function()
             vim.cmd('colorscheme rose-pine')
             function ColorMyPencils(color)
-                print("color my pencil")
                 color = color or "rose-pine"
                 vim.cmd.colorscheme(color)
 
