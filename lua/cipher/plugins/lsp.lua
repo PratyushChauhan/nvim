@@ -108,7 +108,8 @@ return {
             settings = {
                 dart = {
                     completeFunctionCalls = true,
-                    showTodos = true
+                    showTodos = true,
+                    analysisExcludedFolders = { '$Home/AppData/Local/Pub/Cache', "$Home/.pub-cache", "C:/dev/tooling/flutter", }
                 }
             }
         }
@@ -136,7 +137,7 @@ return {
                     { name = "copilot",  group_index = 3, max_item_count = 1 },
                     -- Other Sources
                     { name = 'nvim_lsp', group_index = 1, },
-                    { name = 'luasnip',  group_index = 2, },  -- For luasnip users.
+                    { name = 'luasnip',  group_index = 2, }, -- For luasnip users.
                 },
                 {
                     { name = 'buffer', group_index = 2, },
