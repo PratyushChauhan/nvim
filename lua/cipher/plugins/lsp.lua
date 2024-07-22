@@ -8,7 +8,10 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
-        "L3MON4D3/LuaSnip",
+        {
+            "L3MON4D3/LuaSnip",
+            dependencies = { "rafamadriz/friendly-snippets" },
+        },
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
@@ -113,6 +116,7 @@ return {
                 }
             }
         }
+        lspconfig.htmx.setup {}
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -142,6 +146,9 @@ return {
                 {
                     { name = 'buffer', group_index = 2, },
                 })
+        })
+        require("luasnip.loaders.from_vscode").lazy_load({
+            exclude = {}, -- List of language servers to exclude
         })
 
 
