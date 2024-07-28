@@ -116,7 +116,32 @@ return {
                 }
             }
         }
-        lspconfig.htmx.setup {}
+        lspconfig.htmx.setup {
+            cmd = { "htmx-lsp" },
+            filetypes = { "html", "templ" },
+            single_file_support = true,
+        }
+        --Enable (broadcasting) snippet capability for completion
+        local capabilitiesHtml = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        require 'lspconfig'.html.setup {
+            capabilities = capabilitiesHtml,
+            cmd = { "vscode-html-language-server", "--stdio" },
+            filetypes = { "html", "templ" },
+            init_options = {
+                configurationSection = { "html", "css", "javascript" },
+                embeddedLanguages = {
+                    css = true,
+                    javascript = true
+                },
+                provideFormatter = true
+            },
+            settings = {
+            },
+            single_file_support = true,
+        }
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
