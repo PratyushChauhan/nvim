@@ -14,6 +14,7 @@ return {
         },
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "MunifTanjim/eslint.nvim",
     },
     config = function()
         local cmp = require('cmp')
