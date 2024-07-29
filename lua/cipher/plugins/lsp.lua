@@ -146,6 +146,7 @@ return {
 
 
         eslint.setup({
+            root_dir = lspconfig.util.root_pattern(".git", "eslint.config.js", ".eslintrc.json"),
             bin = 'eslint', -- or `eslint_d`
             code_actions = {
                 enable = true,
