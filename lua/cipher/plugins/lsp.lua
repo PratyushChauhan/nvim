@@ -237,6 +237,7 @@ return {
         })
         require("luasnip.loaders.from_vscode").lazy_load({
             exclude = {}, -- List of language servers to exclude
+            paths = { "../../../snippets/flutter-riverpod-snippets" },
         })
 
 
