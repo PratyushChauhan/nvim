@@ -65,4 +65,4 @@ vim.api.nvim_create_user_command('ToggleFloatingTerminal', function()
     toggleFloat()
 end, {})
 
-vim.api.nvim_set_keymap('n', '<leader>ot', ':ToggleFloatingTerminal<CR>', { noremap = true, silent = true })
+vim.keymap.set({ "n", "t" }, '<leader>ot', ':ToggleFloatingTerminal<CR>', { noremap = true, silent = true })
