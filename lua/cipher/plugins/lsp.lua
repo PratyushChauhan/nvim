@@ -107,22 +107,22 @@ return {
         }
         require('lspconfig').lua_ls.setup({
             settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT',
-                        },
-                        diagnostics = {
-                            globals = {'vim'},
-                        },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                    },
+                    diagnostics = {
+                        globals = { 'vim' },
+                    },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file("", true),
+                        checkThirdParty = false,
+                    },
+                    telemetry = {
+                        enable = false,
                     },
                 },
+            },
         })
         require 'lspconfig'.pyright.setup {
             filetypes = { "py" },
@@ -237,6 +237,10 @@ return {
                     -- Copilot Source
                     --{ name = "copilot",  group_index = 3, max_item_count = 1 },
                     -- Other Sources
+                    {
+                        name = "lazydev",
+                        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+                    },
                     { name = 'nvim_lsp', group_index = 1, },
                     { name = 'luasnip',  group_index = 2, }, -- For luasnip users.
                 },
