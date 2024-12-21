@@ -1,11 +1,49 @@
 {
-    "diagnostics.globals": [
-        "bit",
-        "vim",
-        "it",
-        "describe",
-        "before_each",
-        "after_each",
-        "root_pattern"
-    ]
+  "workspace.library": [
+    "runtime/lua",
+    "${3rd}/luv/library",
+    "~/local/share/nvim/lazy",
+    "${3rd}/luassert/library"
+  ],
+  "workspace.checkThirdParty": false,
+  "runtime.version": "LuaJIT",
+  "diagnostics.globals": [
+    "vim"
+  ],
+  "completion.callSnippet": "Replace",
+  "telemetry.enable": false,
+  "runtime.path": [
+    "lua/?.lua",
+    "lua/?/init.lua"
+  ],
+  "workspace.ignoreDir": [
+    ".git",
+    "lazy-lock.json"
+  ],
+  "diagnostics.disable": [
+    "missing-parameter",
+    "redefined-local"
+  ],
+  "completion.showWord": "Enable",
+  "completion.autoRequire": true,
+  "hint.enable": true,
+  "hover.viewNumber": true,
+  "hover.viewString": true,
+  "hover.viewStringMax": 1000,
+  "doc.privateName": ["_*"],
+  "type.castNumberToInteger": false,
+  "runtime.plugin": true,
+  "runtime.builtin": {
+    "basic": "enable",
+    "debug": "enable",
+    "ffi": "enable",
+    "io": "enable",
+    "jit": "enable",
+    "math": "enable",
+    "os": "enable",
+    "package": "enable",
+    "string": "enable",
+    "table": "enable",
+    "utf8": "enable"
+  }
 }

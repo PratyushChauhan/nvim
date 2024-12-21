@@ -33,6 +33,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "pyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -80,20 +81,6 @@ return {
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
                 end,
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
-                end,
             }
         })
 
@@ -117,6 +104,28 @@ return {
                     analysisExcludedFolders = { '$Home/AppData/Local/Pub/Cache', "$Home/.pub-cache", "C:/dev/tooling/flutter", }
                 }
             }
+        }
+        require('lspconfig').lua_ls.setup({
+            settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        },
+                        diagnostics = {
+                            globals = {'vim'},
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                    },
+                },
+        })
+        require 'lspconfig'.pyright.setup {
+            filetypes = { "py" },
         }
         lspconfig.htmx.setup {
             cmd = { "htmx-lsp" },
@@ -232,7 +241,7 @@ return {
                     { name = 'luasnip',  group_index = 2, }, -- For luasnip users.
                 },
                 {
-                    { name = 'buffer', group_index = 2, },
+                    { name = 'buffer', group_index = 3, },
                 })
         })
         require("luasnip.loaders.from_vscode").lazy_load({
