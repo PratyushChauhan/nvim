@@ -1,5 +1,5 @@
 # My custom neovim config.
-
+-----------This branch is deprecated, use branch "lazy" instead.-----------
 ## Included plugins
 - packer for package management
 - dartls for dart language server support
